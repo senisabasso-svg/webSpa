@@ -1,0 +1,17 @@
+name = "spa-termas-dayman"
+type = "javascript"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+compatibility_date = "2024-01-01"
+
+[env.production]
+name = "spa-termas-dayman-prod"
+routes = [
+    { pattern = "termasdeldayman.com/*", zone_name = "termasdeldayman.com" }
+]
+
+[build]
+command = "npm run build"
+cwd = "./"
