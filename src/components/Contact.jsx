@@ -76,12 +76,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-serif font-bold text-spa-dark mb-1">Teléfono</h4>
-                  <a href="tel:+5984736971" className="text-gray-700 hover:text-spa-gold">
-                    (+598) 4736 9711
-                  </a>
-                  <br />
-                  <a href="tel:+5984736908" className="text-gray-700 hover:text-spa-gold">
-                    (+598) 4736 9008
+                  <a href="tel:+5984736980" className="text-gray-700 hover:text-spa-gold">
+                    (+598) 4736 9280
                   </a>
                 </div>
               </div>
@@ -93,8 +89,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-serif font-bold text-spa-dark mb-1">Email</h4>
-                  <a href="mailto:info@termasdeldayman.com" className="text-gray-700 hover:text-spa-gold">
-                    info@termasdeldayman.com
+                  <a href="mailto:contacto@spathermaldayman.com.uy" className="text-gray-700 hover:text-spa-gold">
+                    contacto@spathermaldayman.com.uy
                   </a>
                 </div>
               </div>
@@ -106,7 +102,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-serif font-bold text-spa-dark mb-1">Horarios</h4>
-                  <p className="text-gray-700">Lunes a Domingo: 8:00 - 22:00</p>
+                  <p className="text-gray-700">Lunes a Domingo: 9:00 - 21:00</p>
                   <p className="text-gray-600 text-sm">Abierto todos los feriados</p>
                 </div>
               </div>
@@ -115,7 +111,7 @@ export default function Contact() {
             {/* WhatsApp Button */}
             <div className="mt-8 pt-8 border-t border-gray-200">
               <a
-                href="https://wa.me/598473697100"
+                href="https://wa.me/5984736980"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-300"

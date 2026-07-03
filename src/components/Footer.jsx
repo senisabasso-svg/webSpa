@@ -11,12 +11,12 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 bg-spa-gold rounded-full flex items-center justify-center">
-                <span className="text-spa-dark font-bold">TD</span>
+                <span className="text-spa-dark font-bold">ST</span>
               </div>
-              <span className="font-serif font-bold text-lg">Termas del Daymán</span>
+              <span className="font-serif font-bold text-lg">SPA Thermal Daymán</span>
             </div>
             <p className="text-gray-400 text-sm">
-              Tu destino de bienestar y relajación en las aguas termales más calientes de Uruguay.
+              Tu spa médico integral en Daymán. Bienestar, relax y salud en un mismo lugar.
             </p>
           </div>
 
@@ -35,7 +35,7 @@ export default function Footer() {
           <div>
             <h4 className="font-serif font-bold text-lg mb-4">Horarios</h4>
             <p className="text-gray-400 text-sm mb-2">Abierto todos los días</p>
-            <p className="text-spa-gold font-semibold text-lg">8:00 - 22:00</p>
+            <p className="text-spa-gold font-semibold text-lg">9:00 - 21:00</p>
             <p className="text-gray-400 text-sm mt-4">Incluyendo feriados</p>
           </div>
 
@@ -43,13 +43,13 @@ export default function Footer() {
           <div>
             <h4 className="font-serif font-bold text-lg mb-4">Contacto</h4>
             <div className="space-y-3">
-              <a href="tel:+5984736971" className="flex items-center gap-2 text-gray-400 hover:text-spa-gold transition-colors">
+              <a href="tel:+5984736980" className="flex items-center gap-2 text-gray-400 hover:text-spa-gold transition-colors">
                 <Phone size={18} />
-                <span className="text-sm">(+598) 4736 9711</span>
+                <span className="text-sm">(+598) 4736 9280</span>
               </a>
-              <a href="mailto:info@termasdeldayman.com" className="flex items-center gap-2 text-gray-400 hover:text-spa-gold transition-colors">
+              <a href="mailto:contacto@spathermaldayman.com.uy" className="flex items-center gap-2 text-gray-400 hover:text-spa-gold transition-colors">
                 <Mail size={18} />
-                <span className="text-sm">info@termasdeldayman.com</span>
+                <span className="text-sm">contacto@spathermaldayman.com.uy</span>
               </a>
               <div className="flex items-start gap-2 text-gray-400">
                 <MapPin size={18} className="mt-1 flex-shrink-0" />
@@ -66,14 +66,14 @@ export default function Footer() {
         <div className="mt-12 flex flex-col md:flex-row justify-between items-center gap-8">
           {/* Copyright */}
           <div className="text-gray-400 text-sm">
-            <p>&copy; 2024 Termas del Daymán. Todos los derechos reservados.</p>
+            <p>&copy; 2026 SPA Thermal Daymán. Todos los derechos reservados.</p>
             <p className="mt-2">Diseño web premium por <a href="https://febros.dev" className="text-spa-gold hover:underline">FEBROS</a></p>
           </div>
 
           {/* Social Links */}
           <div className="flex gap-4">
             <a
-              href="https://facebook.com/termasdedayman"
+              href="https://facebook.com/spathermaldayman"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-white/10 hover:bg-spa-gold text-white hover:text-spa-dark rounded-lg flex items-center justify-center transition-all duration-300"
@@ -81,20 +81,12 @@ export default function Footer() {
               <Facebook size={20} />
             </a>
             <a
-              href="https://instagram.com/termasdedayman"
+              href="https://instagram.com/spathermaldayman"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 bg-white/10 hover:bg-spa-gold text-white hover:text-spa-dark rounded-lg flex items-center justify-center transition-all duration-300"
             >
               <Instagram size={20} />
-            </a>
-            <a
-              href="https://twitter.com/termasdedayman"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 bg-white/10 hover:bg-spa-gold text-white hover:text-spa-dark rounded-lg flex items-center justify-center transition-all duration-300"
-            >
-              <Twitter size={20} />
             </a>
           </div>
 

@@ -17,30 +17,30 @@ export default function About() {
           {/* Content */}
           <div>
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-spa-dark mb-6">
-              Sobre Termas del Daymán
+              Sobre SPA Thermal Daymán
             </h2>
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Las Termas del Daymán son las aguas termales más calientes de Uruguay, con temperaturas que alcanzan hasta 44°C. Ubicadas a solo 10 km de la ciudad de Salto, en la costa del río Daymán, ofrecen una experiencia única de bienestar integral.
+              SPA Thermal Daymán es el spa médico más completo de Salto. Ubicado en el corazón de Daymán, a solo 10 km de la ciudad, combina las propiedades terapéuticas de las aguas termales naturales con tecnología médica de vanguardia y servicios de bienestar integral.
             </p>
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Descubierto accidentalmente en los años 40 durante exploraciones petroleras, este tesoro natural ofrece aguas ricas en minerales como magnesio, iodo, fluoruro y calcio, con propiedades terapéuticas comprobadas.
+              Nuestro equipo de profesionales certificados ofrece una experiencia personalizada en bienestar. Contamos con 8 piscinas termales a diferentes temperaturas, sauna, vapor, medicina hiperbárica, masajes terapéuticos y tratamientos faciales de lujo.
             </p>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-white p-4 rounded-lg border-l-4 border-spa-gold">
-                <h3 className="font-serif font-bold text-spa-gold text-2xl">44°C</h3>
-                <p className="text-gray-700 text-sm">Temperatura máxima</p>
+                <h3 className="font-serif font-bold text-spa-gold text-2xl">8</h3>
+                <p className="text-gray-700 text-sm">Piscinas termales</p>
               </div>
               <div className="bg-white p-4 rounded-lg border-l-4 border-spa-gold">
                 <h3 className="font-serif font-bold text-spa-gold text-2xl">10 km</h3>
                 <p className="text-gray-700 text-sm">De Salto ciudad</p>
               </div>
               <div className="bg-white p-4 rounded-lg border-l-4 border-spa-gold">
-                <h3 className="font-serif font-bold text-spa-gold text-2xl">10+</h3>
-                <p className="text-gray-700 text-sm">Piscinas termales</p>
+                <h3 className="font-serif font-bold text-spa-gold text-2xl">$250</h3>
+                <p className="text-gray-700 text-sm">Entrada diaria</p>
               </div>
               <div className="bg-white p-4 rounded-lg border-l-4 border-spa-gold">
-                <h3 className="font-serif font-bold text-spa-gold text-2xl">8-22h</h3>
+                <h3 className="font-serif font-bold text-spa-gold text-2xl">9-21h</h3>
                 <p className="text-gray-700 text-sm">Horario abierto</p>
               </div>
             </div>

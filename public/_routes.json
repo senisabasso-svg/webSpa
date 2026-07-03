@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/assets/*",
+    "/favicon.ico",
+    "/manifest.json",
+    "*.jpg",
+    "*.jpeg",
+    "*.png",
+    "*.gif",
+    "*.svg",
+    "*.webp"
+  ],
+  "rules": [
+    {
+      "type": "function",
+      "pattern": "/*",
+      "function": "index"
+    }
+  ]
+}
