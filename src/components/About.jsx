@@ -1,53 +1,65 @@
 import React from 'react'
+import { MapPin, Clock, Waves, DollarSign } from 'lucide-react'
+
+const stats = [
+  { icon: Waves, value: '8', label: 'Piscinas termales' },
+  { icon: MapPin, value: '10 km', label: 'De Salto ciudad' },
+  { icon: DollarSign, value: '$250', label: 'Entrada diaria' },
+  { icon: Clock, value: '9–21h', label: 'Horario diario' },
+]
 
 export default function About() {
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-spa-cream">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Image */}
-          <div className="rounded-2xl overflow-hidden shadow-2xl h-96 md:h-full min-h-96">
-            <img
-              src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&h=600&fit=crop"
-              alt="Instalaciones del Spa Termas del Daymán"
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-            />
+    <section id="about" className="section-padding bg-spa-gradient relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-spa-gold/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-spa-sage/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+      <div className="max-w-6xl mx-auto relative">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="image-frame order-2 md:order-1">
+            <div className="rounded-3xl overflow-hidden shadow-spa-lg aspect-[4/5]">
+              <img
+                src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=700&h=900&fit=crop&q=80"
+                alt="Instalaciones de SPA Thermal Daymán"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
           </div>
 
-          {/* Content */}
-          <div>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-spa-dark mb-6">
-              Sobre SPA Thermal Daymán
+          <div className="order-1 md:order-2">
+            <span className="section-label">Nuestra Historia</span>
+            <h2 className="section-title mb-6">
+              Un refugio de <span className="text-gradient-gold italic">bienestar</span> en Daymán
             </h2>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              SPA Thermal Daymán es el spa médico más completo de Salto. Ubicado en el corazón de Daymán, a solo 10 km de la ciudad, combina las propiedades terapéuticas de las aguas termales naturales con tecnología médica de vanguardia y servicios de bienestar integral.
+            <div className="divider-ornament">
+              <span className="text-spa-gold text-lg">✦</span>
+            </div>
+            <p className="text-gray-700 mb-5 leading-relaxed text-lg">
+              SPA Thermal Daymán es el spa médico más completo de Salto. Combinamos las propiedades terapéuticas de las aguas termales naturales con tecnología médica de vanguardia y servicios de bienestar integral.
             </p>
-            <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              Nuestro equipo de profesionales certificados ofrece una experiencia personalizada en bienestar. Contamos con 8 piscinas termales a diferentes temperaturas, sauna, vapor, medicina hiperbárica, masajes terapéuticos y tratamientos faciales de lujo.
+            <p className="text-gray-600 mb-10 leading-relaxed">
+              Nuestro equipo de profesionales certificados crea experiencias personalizadas: 8 piscinas a distintas temperaturas, sauna, vapor, medicina hiperbárica, masajes terapéuticos y tratamientos faciales de lujo.
             </p>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white p-4 rounded-lg border-l-4 border-spa-gold">
-                <h3 className="font-serif font-bold text-spa-gold text-2xl">8</h3>
-                <p className="text-gray-700 text-sm">Piscinas termales</p>
-              </div>
-              <div className="bg-white p-4 rounded-lg border-l-4 border-spa-gold">
-                <h3 className="font-serif font-bold text-spa-gold text-2xl">10 km</h3>
-                <p className="text-gray-700 text-sm">De Salto ciudad</p>
-              </div>
-              <div className="bg-white p-4 rounded-lg border-l-4 border-spa-gold">
-                <h3 className="font-serif font-bold text-spa-gold text-2xl">$250</h3>
-                <p className="text-gray-700 text-sm">Entrada diaria</p>
-              </div>
-              <div className="bg-white p-4 rounded-lg border-l-4 border-spa-gold">
-                <h3 className="font-serif font-bold text-spa-gold text-2xl">9-21h</h3>
-                <p className="text-gray-700 text-sm">Horario abierto</p>
-              </div>
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              {stats.map((stat, idx) => {
+                const Icon = stat.icon
+                return (
+                  <div key={idx} className="card-spa p-5 group">
+                    <Icon size={22} className="text-spa-gold mb-3 group-hover:scale-110 transition-transform" />
+                    <h3 className="font-serif font-bold text-spa-gold text-2xl">{stat.value}</h3>
+                    <p className="text-gray-600 text-sm mt-1">{stat.label}</p>
+                  </div>
+                )
+              })}
             </div>
 
-            <p className="text-gray-600 mt-8 text-sm">
-              <strong>Ubicación:</strong> Km 478 Ruta 3, Costa del Río Daymán, Salto, Uruguay
-            </p>
+            <div className="flex items-start gap-3 text-gray-600">
+              <MapPin size={20} className="text-spa-gold mt-0.5 flex-shrink-0" />
+              <p className="text-sm">
+                <strong className="text-spa-dark">Ubicación:</strong> Km 478 Ruta 3, Costa del Río Daymán, Salto, Uruguay
+              </p>
+            </div>
           </div>
         </div>
       </div>

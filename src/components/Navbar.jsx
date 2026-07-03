@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Link } from 'react-scroll'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const menuItems = [
     { label: 'Inicio', to: 'hero' },
-    { label: 'Sobre Nosotros', to: 'about' },
+    { label: 'Nosotros', to: 'about' },
     { label: 'Servicios', to: 'services' },
     { label: 'Instalaciones', to: 'facilities' },
     { label: 'Beneficios', to: 'benefits' },
@@ -15,85 +22,88 @@ export default function Navbar() {
     { label: 'Contacto', to: 'contact' },
   ]
 
-  return (
-    <nav className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-spa-gold rounded-full flex items-center justify-center">
-              <span className="text-spa-dark font-bold text-sm">TD</span>
-            </div>
-            <span className="hidden sm:inline font-serif font-semibold text-spa-dark">
-              Termas del Daymán
-            </span>
-          </div>
+  const navClass = scrolled ? 'glass-nav shadow-spa' : 'glass-nav-transparent'
+  const textClass = scrolled ? 'text-spa-dark' : 'text-white'
+  const logoBg = scrolled ? 'bg-spa-gold' : 'bg-white/20 backdrop-blur-sm border border-white/30'
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-1">
+  return (
+    <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${navClass}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          <Link to="hero" smooth={true} duration={500} className="flex items-center gap-3 cursor-pointer group">
+            <div className={`w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 ${logoBg}`}>
+              <span className={`font-serif font-bold text-lg ${scrolled ? 'text-spa-dark' : 'text-white'}`}>ST</span>
+            </div>
+            <div className="hidden sm:block">
+              <span className={`font-serif font-semibold text-lg leading-tight block transition-colors ${textClass}`}>
+                SPA Thermal Daymán
+              </span>
+              <span className={`text-[10px] uppercase tracking-[0.2em] transition-colors ${scrolled ? 'text-spa-gold' : 'text-white/70'}`}>
+                Salto · Uruguay
+              </span>
+            </div>
+          </Link>
+
+          <div className="hidden lg:flex items-center gap-1">
             {menuItems.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 smooth={true}
                 duration={500}
-                className="px-4 py-2 text-spa-dark hover:text-spa-gold transition-colors cursor-pointer font-medium text-sm"
+                offset={-80}
+                className={`px-3 py-2 transition-colors cursor-pointer font-medium text-sm tracking-wide hover:text-spa-gold ${textClass}`}
               >
                 {item.label}
               </Link>
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Link
-              to="contact"
-              smooth={true}
-              duration={500}
-              className="btn-primary cursor-pointer"
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="https://wa.me/5984736980"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={scrolled ? 'btn-primary text-sm py-2.5 px-6' : 'btn-white text-sm py-2.5 px-6'}
             >
               Reservar
-            </Link>
+            </a>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className={`md:hidden p-2 rounded-full transition-colors ${scrolled ? 'hover:bg-spa-cream text-spa-dark' : 'hover:bg-white/10 text-white'}`}
+            aria-label="Menú"
           >
-            {isOpen ? (
-              <X size={24} className="text-spa-dark" />
-            ) : (
-              <Menu size={24} className="text-spa-dark" />
-            )}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4 bg-white/95 backdrop-blur">
-            <div className="flex flex-col space-y-2">
+          <div className="md:hidden pb-6 bg-white/95 backdrop-blur-xl rounded-b-2xl shadow-spa-lg -mx-4 px-4">
+            <div className="flex flex-col gap-1 pt-2">
               {menuItems.map((item) => (
                 <Link
                   key={item.to}
                   to={item.to}
                   smooth={true}
                   duration={500}
-                  className="px-4 py-2 text-spa-dark hover:text-spa-gold transition-colors cursor-pointer font-medium"
+                  offset={-80}
+                  className="px-4 py-3 text-spa-dark hover:text-spa-gold hover:bg-spa-cream/50 rounded-xl transition-colors cursor-pointer font-medium"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
-              <Link
-                to="contact"
-                smooth={true}
-                duration={500}
-                className="btn-primary cursor-pointer text-center"
+              <a
+                href="https://wa.me/5984736980"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-center mt-2"
                 onClick={() => setIsOpen(false)}
               >
-                Reservar
-              </Link>
+                Reservar por WhatsApp
+              </a>
             </div>
           </div>
         )}

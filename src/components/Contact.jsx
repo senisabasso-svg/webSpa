@@ -1,28 +1,17 @@
 import React, { useState } from 'react'
-import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from 'lucide-react'
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  })
-
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Aquí iría la integración con un servicio de email o backend
-    console.log('Form submitted:', formData)
     setSubmitted(true)
     setTimeout(() => {
       setFormData({ name: '', email: '', phone: '', message: '' })
@@ -30,152 +19,128 @@ export default function Contact() {
     }, 3000)
   }
 
+  const contactItems = [
+    {
+      icon: MapPin,
+      title: 'Ubicación',
+      content: (
+        <>
+          <p className="text-gray-700">Km 478 Ruta 3, Costa del Río Daymán</p>
+          <p className="text-gray-500 text-sm">Salto, Uruguay</p>
+          <a
+            href="https://maps.google.com/maps?q=Termas+del+Dayman+Salto+Uruguay"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-spa-gold hover:text-spa-gold-dark font-medium text-sm mt-2 inline-block"
+          >
+            Ver en Google Maps →
+          </a>
+        </>
+      ),
+    },
+    {
+      icon: Phone,
+      title: 'Teléfono',
+      content: (
+        <a href="tel:+5984736980" className="text-gray-700 hover:text-spa-gold transition-colors">
+          (+598) 4736 9280
+        </a>
+      ),
+    },
+    {
+      icon: Mail,
+      title: 'Email',
+      content: (
+        <a href="mailto:contacto@spathermaldayman.com.uy" className="text-gray-700 hover:text-spa-gold transition-colors">
+          contacto@spathermaldayman.com.uy
+        </a>
+      ),
+    },
+    {
+      icon: Clock,
+      title: 'Horarios',
+      content: (
+        <>
+          <p className="text-gray-700">Lunes a Domingo: 9:00 – 21:00</p>
+          <p className="text-gray-500 text-sm">Abierto todos los feriados</p>
+        </>
+      ),
+    },
+  ]
+
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-spa-cream">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
+    <section id="contact" className="section-padding bg-spa-cream relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-80 h-80 bg-spa-gold/5 rounded-full blur-3xl -translate-x-1/2" />
+
+      <div className="max-w-7xl mx-auto relative">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-spa-dark mb-6">
-            Reserva Tu Experiencia
+          <span className="section-label">Reservas</span>
+          <h2 className="section-title mb-5">
+            Reserva tu <span className="text-gradient-gold italic">experiencia</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Contacta con nosotros para agendar tu visita o consultar sobre nuestros servicios
+          <p className="section-subtitle mx-auto">
+            Estamos listos para recibirte. Escribinos y te ayudamos a planificar tu visita ideal
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
           <div>
-            <h3 className="text-2xl font-serif font-bold text-spa-dark mb-8">Información de Contacto</h3>
-
-            <div className="space-y-6">
-              {/* Location */}
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-spa-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <MapPin size={24} className="text-spa-gold" />
-                </div>
-                <div>
-                  <h4 className="font-serif font-bold text-spa-dark mb-1">Ubicación</h4>
-                  <p className="text-gray-700">Km 478 Ruta 3, Costa del Río Daymán</p>
-                  <p className="text-gray-600 text-sm">Salto, Uruguay</p>
-                  <a
-                    href="https://maps.google.com/maps?q=Termas+del+Dayman+Salto+Uruguay"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-spa-gold hover:text-spa-dark font-semibold text-sm mt-2 inline-block"
-                  >
-                    Ver en Google Maps →
-                  </a>
-                </div>
-              </div>
-
-              {/* Phone */}
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-spa-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Phone size={24} className="text-spa-gold" />
-                </div>
-                <div>
-                  <h4 className="font-serif font-bold text-spa-dark mb-1">Teléfono</h4>
-                  <a href="tel:+5984736980" className="text-gray-700 hover:text-spa-gold">
-                    (+598) 4736 9280
-                  </a>
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-spa-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Mail size={24} className="text-spa-gold" />
-                </div>
-                <div>
-                  <h4 className="font-serif font-bold text-spa-dark mb-1">Email</h4>
-                  <a href="mailto:contacto@spathermaldayman.com.uy" className="text-gray-700 hover:text-spa-gold">
-                    contacto@spathermaldayman.com.uy
-                  </a>
-                </div>
-              </div>
-
-              {/* Hours */}
-              <div className="flex gap-4">
-                <div className="w-12 h-12 bg-spa-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <Clock size={24} className="text-spa-gold" />
-                </div>
-                <div>
-                  <h4 className="font-serif font-bold text-spa-dark mb-1">Horarios</h4>
-                  <p className="text-gray-700">Lunes a Domingo: 9:00 - 21:00</p>
-                  <p className="text-gray-600 text-sm">Abierto todos los feriados</p>
-                </div>
-              </div>
+            <div className="space-y-5 mb-8">
+              {contactItems.map((item, idx) => {
+                const Icon = item.icon
+                return (
+                  <div key={idx} className="card-spa p-5 flex gap-4">
+                    <div className="w-12 h-12 bg-spa-cream rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Icon size={22} className="text-spa-gold" />
+                    </div>
+                    <div>
+                      <h4 className="font-serif font-semibold text-spa-dark mb-1">{item.title}</h4>
+                      {item.content}
+                    </div>
+                  </div>
+                )
+              })}
             </div>
 
-            {/* WhatsApp Button */}
-            <div className="mt-8 pt-8 border-t border-gray-200">
-              <a
-                href="https://wa.me/5984736980"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-300"
-              >
-                <MessageCircle size={24} />
-                Escribir por WhatsApp
-              </a>
-            </div>
+            <a
+              href="https://wa.me/5984736980"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+            >
+              <MessageCircle size={22} />
+              Escribir por WhatsApp
+            </a>
           </div>
 
-          {/* Contact Form */}
-          <div>
-            <h3 className="text-2xl font-serif font-bold text-spa-dark mb-8">Envíanos tu Consulta</h3>
+          <div className="card-spa p-8 md:p-10">
+            <h3 className="text-2xl font-serif font-semibold text-spa-dark mb-6">Envíanos tu consulta</h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-spa-dark mb-2">
-                  Nombre Completo
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="Tu nombre"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-spa-gold focus:ring-2 focus:ring-spa-gold/20 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-spa-dark mb-2">
-                  Correo Electrónico
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="tu@email.com"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-spa-gold focus:ring-2 focus:ring-spa-gold/20 transition-colors"
-                />
-              </div>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {[
+                { id: 'name', label: 'Nombre Completo', type: 'text', placeholder: 'Tu nombre', required: true },
+                { id: 'email', label: 'Correo Electrónico', type: 'email', placeholder: 'tu@email.com', required: true },
+                { id: 'phone', label: 'Teléfono', type: 'tel', placeholder: '+598 98765432', required: false },
+              ].map((field) => (
+                <div key={field.id}>
+                  <label htmlFor={field.id} className="block text-sm font-medium text-spa-dark mb-2">
+                    {field.label}
+                  </label>
+                  <input
+                    type={field.type}
+                    id={field.id}
+                    name={field.id}
+                    value={formData[field.id]}
+                    onChange={handleChange}
+                    required={field.required}
+                    placeholder={field.placeholder}
+                    className="w-full px-4 py-3.5 bg-spa-light border border-spa-sand rounded-xl focus:border-spa-gold transition-colors"
+                  />
+                </div>
+              ))}
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-spa-dark mb-2">
-                  Teléfono
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="+598 98765432"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-spa-gold focus:ring-2 focus:ring-spa-gold/20 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-spa-dark mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-spa-dark mb-2">
                   Mensaje
                 </label>
                 <textarea
@@ -184,21 +149,23 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  placeholder="Cuéntanos tus necesidades..."
+                  placeholder="Cuéntanos qué experiencia buscás..."
                   rows="5"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-spa-gold focus:ring-2 focus:ring-spa-gold/20 transition-colors resize-none"
-                ></textarea>
+                  className="w-full px-4 py-3.5 bg-spa-light border border-spa-sand rounded-xl focus:border-spa-gold transition-colors resize-none"
+                />
               </div>
 
-              <button
-                type="submit"
-                className="w-full btn-primary"
-              >
-                {submitted ? '✓ Mensaje Enviado' : 'Enviar Consulta'}
+              <button type="submit" className="w-full btn-primary">
+                {submitted ? '✓ Mensaje Enviado' : (
+                  <>
+                    Enviar Consulta
+                    <Send size={18} />
+                  </>
+                )}
               </button>
 
               {submitted && (
-                <p className="text-center text-green-600 font-semibold">
+                <p className="text-center text-spa-sage font-medium text-sm">
                   Gracias por tu consulta. Nos contactaremos pronto.
                 </p>
               )}
@@ -206,10 +173,9 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* Map */}
         <div className="mt-16">
-          <h3 className="text-2xl font-serif font-bold text-spa-dark mb-8">Ubicación</h3>
-          <div className="rounded-xl overflow-hidden shadow-lg h-96">
+          <h3 className="text-2xl font-serif font-semibold text-spa-dark mb-6 text-center">Cómo llegar</h3>
+          <div className="rounded-3xl overflow-hidden shadow-spa-lg h-80 md:h-96 ring-1 ring-spa-sand">
             <iframe
               width="100%"
               height="100%"
@@ -219,7 +185,8 @@ export default function Contact() {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+              title="Ubicación SPA Thermal Daymán"
+            />
           </div>
         </div>
       </div>

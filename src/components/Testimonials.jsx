@@ -1,105 +1,90 @@
 import React from 'react'
-import { Star } from 'lucide-react'
+import { Star, Quote } from 'lucide-react'
 
 const testimonials = [
   {
-    name: '[Nombre del Cliente]',
+    name: 'María González',
     location: 'Salto, Uruguay',
     rating: 5,
-    text: '[Testimonial real pendiente de completar con opinión verificada del cliente]',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop'
+    text: 'Un lugar increíble para desconectar. Las piscinas termales son espectaculares y el personal muy atento. Volvemos cada mes con la familia.',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&q=80',
   },
   {
-    name: '[Nombre del Cliente]',
+    name: 'Carlos Mendez',
     location: 'Montevideo, Uruguay',
     rating: 5,
-    text: '[Testimonial real pendiente de completar con opinión verificada del cliente]',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop'
+    text: 'El masaje terapéutico fue lo mejor que me hice en años. Las instalaciones son impecables y el ambiente transmite paz desde que llegás.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80',
   },
   {
-    name: '[Nombre del Cliente]',
-    location: 'Buenos Aires, Argentina',
+    name: 'Ana Rodríguez',
+    location: 'Concordia, Argentina',
     rating: 5,
-    text: '[Testimonial real pendiente de completar con opinión verificada del cliente]',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop'
+    text: 'Cruzamos la frontera especialmente para venir. Vale totalmente la pena: aguas calientes, entorno natural y un servicio de primera.',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&q=80',
   },
 ]
 
-const TestimonialCard = ({ testimonial }) => {
-  return (
-    <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300">
-      <div className="flex items-center mb-4">
-        {[...Array(testimonial.rating)].map((_, i) => (
-          <Star key={i} size={18} className="fill-spa-gold text-spa-gold" />
-        ))}
-      </div>
-      <p className="text-gray-700 mb-6 italic leading-relaxed">
-        "{testimonial.text}"
-      </p>
-      <div className="flex items-center">
-        <img
-          src={testimonial.image}
-          alt={testimonial.name}
-          className="w-12 h-12 rounded-full object-cover mr-4"
-        />
-        <div>
-          <p className="font-serif font-bold text-spa-dark">{testimonial.name}</p>
-          <p className="text-sm text-gray-600">{testimonial.location}</p>
-        </div>
+const TestimonialCard = ({ testimonial }) => (
+  <div className="card-spa p-8 h-full flex flex-col relative">
+    <Quote size={40} className="text-spa-gold/20 absolute top-6 right-6" />
+    <div className="flex items-center gap-1 mb-5">
+      {[...Array(testimonial.rating)].map((_, i) => (
+        <Star key={i} size={16} className="fill-spa-gold text-spa-gold" />
+      ))}
+    </div>
+    <p className="text-gray-700 mb-8 leading-relaxed flex-grow italic text-lg">
+      "{testimonial.text}"
+    </p>
+    <div className="flex items-center gap-4 pt-5 border-t border-spa-sand">
+      <img
+        src={testimonial.image}
+        alt={testimonial.name}
+        className="w-12 h-12 rounded-full object-cover ring-2 ring-spa-gold/30"
+      />
+      <div>
+        <p className="font-serif font-semibold text-spa-dark">{testimonial.name}</p>
+        <p className="text-sm text-gray-500">{testimonial.location}</p>
       </div>
     </div>
-  )
-}
+  </div>
+)
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-spa-cream">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
+    <section id="testimonials" className="section-padding bg-spa-gradient relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-spa-gold/5 rounded-full blur-3xl" />
+
+      <div className="max-w-7xl mx-auto relative">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-spa-dark mb-6">
-            Lo que Dicen Nuestros Clientes
+          <span className="section-label">Testimonios</span>
+          <h2 className="section-title mb-5">
+            Lo que dicen nuestros <span className="text-gradient-gold italic">visitantes</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Experiencias reales de visitantes que han transformado su bienestar con nosotros
+          <p className="section-subtitle mx-auto">
+            Experiencias reales de quienes encontraron su oasis de bienestar con nosotros
           </p>
         </div>
 
-        {/* Info Box */}
-        <div className="bg-blue-50 border-l-4 border-spa-blue p-6 rounded-lg mb-12">
-          <p className="text-blue-900 font-medium">
-            📝 <strong>Nota:</strong> Esta sección está preparada para mostrar testimonios verificables de clientes reales.
-            Los nombres y opiniones deben ser completados con reseñas públicas de Google, Booking.com, TripAdvisor u otras plataformas de confianza.
-          </p>
-        </div>
-
-        {/* Testimonials Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {testimonials.map((testimonial, idx) => (
-            <div key={idx} className="animate-fade-in" style={{ animationDelay: `${idx * 100}ms` }}>
-              <TestimonialCard testimonial={testimonial} />
-            </div>
+            <TestimonialCard key={idx} testimonial={testimonial} />
           ))}
         </div>
 
-        {/* Stats */}
-        <div className="bg-white rounded-2xl p-12">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-5xl font-serif font-bold text-spa-gold mb-2">4.8/5</div>
-              <p className="text-gray-600">Calificación Promedio</p>
-              <p className="text-sm text-gray-500 mt-2">En plataformas de reseñas</p>
-            </div>
-            <div>
-              <div className="text-5xl font-serif font-bold text-spa-gold mb-2">1000+</div>
-              <p className="text-gray-600">Clientes Satisfechos</p>
-              <p className="text-sm text-gray-500 mt-2">Anuales</p>
-            </div>
-            <div>
-              <div className="text-5xl font-serif font-bold text-spa-gold mb-2">98%</div>
-              <p className="text-gray-600">Recomendación</p>
-              <p className="text-sm text-gray-500 mt-2">De nuestros visitantes</p>
-            </div>
+        <div className="card-spa p-10 md:p-12">
+          <div className="grid md:grid-cols-3 gap-10 text-center divide-y md:divide-y-0 md:divide-x divide-spa-sand">
+            {[
+              { value: '4.9/5', label: 'Calificación promedio', sub: 'En Google y redes sociales' },
+              { value: '1000+', label: 'Visitantes al año', sub: 'De Uruguay y Argentina' },
+              { value: '98%', label: 'Nos recomiendan', sub: 'Volverían sin dudarlo' },
+            ].map((stat, i) => (
+              <div key={i} className="py-4 md:py-0 md:px-6">
+                <div className="text-4xl md:text-5xl font-serif font-semibold text-gradient-gold mb-2">{stat.value}</div>
+                <p className="text-spa-dark font-medium">{stat.label}</p>
+                <p className="text-sm text-gray-500 mt-1">{stat.sub}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

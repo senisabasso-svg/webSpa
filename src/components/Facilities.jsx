@@ -1,129 +1,137 @@
-import React, { useState } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import React, { useState, useEffect } from 'react'
+import { ChevronLeft, ChevronRight, Thermometer, Sparkles, Leaf, Accessibility } from 'lucide-react'
 
 const facilities = [
   {
-    image: 'https://images.unsplash.com/photo-1544161515-81aae3ff8556?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1540555700474-954638992c09?w=1200&h=700&fit=crop&q=80',
     title: 'Piscinas Termales',
-    description: 'Múltiples piscinas con agua a diferentes temperaturas'
+    description: 'Ocho piscinas con agua natural a distintas temperaturas',
   },
   {
-    image: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1200&h=700&fit=crop&q=80',
     title: 'Sauna y Vapor',
-    description: 'Sauna finlandés y cabina de vapor para desintoxicación'
+    description: 'Sauna finlandés y cabina de vapor para desintoxicación profunda',
   },
   {
-    image: 'https://images.unsplash.com/photo-1600881333195-c2f63f5d3b59?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1200&h=700&fit=crop&q=80',
     title: 'Área de Masajes',
-    description: 'Salas profesionales para tratamientos personalizados'
+    description: 'Salas privadas con ambiente sereno para tratamientos exclusivos',
   },
   {
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=700&fit=crop&q=80',
     title: 'Zona de Relajación',
-    description: 'Espacios tranquilos para descanso y meditación'
+    description: 'Espacios diseñados para meditación y descanso profundo',
   },
   {
-    image: 'https://images.unsplash.com/photo-1505228395891-9a51e7e86e81?w=800&h=600&fit=crop',
-    title: 'Parque Natural',
-    description: 'Entorno natural con vegetación nativa'
+    image: 'https://images.unsplash.com/photo-1505228395891-9a51e7e86e81?w=1200&h=700&fit=crop&q=80',
+    title: 'Entorno Natural',
+    description: 'Rodeado de vegetación nativa y aire puro del río Daymán',
   },
   {
-    image: 'https://images.unsplash.com/photo-1597836212624-27a9be7d0d18?w=800&h=600&fit=crop',
+    image: 'https://images.unsplash.com/photo-1597836212624-27a9be7d0d18?w=1200&h=700&fit=crop&q=80',
     title: 'Vista al Río Daymán',
-    description: 'Hermosas vistas al río para mayor experiencia'
+    description: 'Paisajes únicos que elevan cada momento de tu visita',
   },
+]
+
+const features = [
+  { icon: Thermometer, title: 'Aguas Termales', desc: 'Propiedades minerales naturales' },
+  { icon: Sparkles, title: 'Masajes Profesionales', desc: 'Terapeutas certificados' },
+  { icon: Leaf, title: 'Entorno Natural', desc: 'Naturaleza y tranquilidad' },
+  { icon: Accessibility, title: 'Accesibilidad', desc: 'Instalaciones inclusivas' },
 ]
 
 export default function Facilities() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % facilities.length)
-  }
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % facilities.length)
+    }, 6000)
+    return () => clearInterval(timer)
+  }, [])
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + facilities.length) % facilities.length)
-  }
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % facilities.length)
+  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + facilities.length) % facilities.length)
 
   return (
-    <section id="facilities" className="py-20 px-4 sm:px-6 lg:px-8 bg-spa-cream">
+    <section id="facilities" className="section-padding bg-spa-cream relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-spa-dark mb-4">
-            Nuestras Instalaciones
+          <span className="section-label">El Lugar</span>
+          <h2 className="section-title mb-5">
+            Instalaciones de <span className="text-gradient-gold italic">clase mundial</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Infraestructura de clase mundial para tu experiencia de bienestar
+          <p className="section-subtitle mx-auto">
+            Espacios pensados para que cada visita sea una experiencia memorable
           </p>
         </div>
 
-        {/* Main Slider */}
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-8">
-          <div className="aspect-video relative">
-            <img
-              src={facilities[currentIndex].image}
-              alt={facilities[currentIndex].title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-8">
-              <div>
-                <h3 className="text-3xl font-serif font-bold text-white mb-2">
-                  {facilities[currentIndex].title}
-                </h3>
-                <p className="text-white/90">{facilities[currentIndex].description}</p>
+        <div className="relative rounded-3xl overflow-hidden shadow-spa-lg mb-6 group">
+          <div className="aspect-[16/9] md:aspect-[21/9] relative">
+            {facilities.map((facility, idx) => (
+              <div
+                key={idx}
+                className={`absolute inset-0 transition-opacity duration-700 ${idx === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+              >
+                <img src={facility.image} alt={facility.title} className="w-full h-full object-cover" />
               </div>
+            ))}
+            <div className="absolute inset-0 bg-gradient-to-t from-spa-dark/80 via-spa-dark/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+              <span className="text-spa-gold-light text-sm uppercase tracking-widest mb-2 block">
+                {String(currentIndex + 1).padStart(2, '0')} / {String(facilities.length).padStart(2, '0')}
+              </span>
+              <h3 className="text-3xl md:text-4xl font-serif font-semibold text-white mb-2">
+                {facilities[currentIndex].title}
+              </h3>
+              <p className="text-white/80 text-lg max-w-xl">{facilities[currentIndex].description}</p>
             </div>
           </div>
 
-          {/* Controls */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full transition-all"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-spa flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-105"
+            aria-label="Anterior"
           >
             <ChevronLeft size={24} className="text-spa-dark" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white p-2 rounded-full transition-all"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-spa flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-105"
+            aria-label="Siguiente"
           >
             <ChevronRight size={24} className="text-spa-dark" />
           </button>
         </div>
 
-        {/* Thumbnails */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-16">
           {facilities.map((facility, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`relative rounded-lg overflow-hidden h-24 transition-all ${
-                idx === currentIndex ? 'ring-4 ring-spa-gold' : 'opacity-70 hover:opacity-100'
+              className={`relative rounded-xl overflow-hidden aspect-video transition-all duration-300 ${
+                idx === currentIndex ? 'ring-2 ring-spa-gold ring-offset-2 scale-105' : 'opacity-60 hover:opacity-100'
               }`}
             >
-              <img
-                src={facility.image}
-                alt={facility.title}
-                className="w-full h-full object-cover"
-              />
+              <img src={facility.image} alt={facility.title} className="w-full h-full object-cover" />
             </button>
           ))}
         </div>
 
-        {/* Features Grid */}
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { icon: '🌡️', title: 'Aguas a 44°C', desc: 'Las más calientes del país' },
-            { icon: '💆', title: 'Masajes Profesionales', desc: 'Terapeutas certificados' },
-            { icon: '🍃', title: 'Entorno Natural', desc: 'Rodeado de naturaleza' },
-            { icon: '♿', title: 'Accesibilidad', desc: 'Instalaciones inclusivas' },
-          ].map((feature, idx) => (
-            <div key={idx} className="bg-white p-6 rounded-lg text-center hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-3">{feature.icon}</div>
-              <h3 className="font-serif font-bold text-spa-dark mb-2">{feature.title}</h3>
-              <p className="text-gray-600 text-sm">{feature.desc}</p>
-            </div>
-          ))}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((feature, idx) => {
+            const Icon = feature.icon
+            return (
+              <div key={idx} className="card-spa p-6 text-center group">
+                <div className="w-14 h-14 mx-auto mb-4 bg-spa-cream rounded-2xl flex items-center justify-center group-hover:bg-spa-gold/15 transition-colors">
+                  <Icon size={26} className="text-spa-gold" />
+                </div>
+                <h3 className="font-serif font-semibold text-spa-dark text-lg mb-2">{feature.title}</h3>
+                <p className="text-gray-600 text-sm">{feature.desc}</p>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
