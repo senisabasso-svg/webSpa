@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Link } from 'react-scroll'
+import { SITE } from '../data/site'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -36,10 +37,10 @@ export default function Navbar() {
             </div>
             <div className="hidden sm:block">
               <span className={`font-serif font-semibold text-lg leading-tight block transition-colors ${textClass}`}>
-                SPA Thermal Daymán
+                {SITE.name}
               </span>
               <span className={`text-[10px] uppercase tracking-[0.2em] transition-colors ${scrolled ? 'text-spa-gold' : 'text-white/70'}`}>
-                Salto · Uruguay
+                {SITE.tagline}
               </span>
             </div>
           </Link>
@@ -61,7 +62,7 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="https://wa.me/5984736980"
+              href={`https://wa.me/${SITE.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
               className={scrolled ? 'btn-primary text-sm py-2.5 px-6' : 'btn-white text-sm py-2.5 px-6'}
@@ -96,7 +97,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <a
-                href="https://wa.me/5984736980"
+                href={`https://wa.me/${SITE.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary text-center mt-2"

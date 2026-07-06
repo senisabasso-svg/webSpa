@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { ChevronDown, MessageCircle } from 'lucide-react'
+import { SITE } from '../data/site'
 
 const faqs = [
   {
     question: '¿Cuál es la temperatura del agua?',
-    answer: 'Las aguas termales de Daymán alcanzan hasta 44°C. Contamos con 8 piscinas a distintas temperaturas para que elijas la que más te convenga.',
+    answer: `Las aguas termales de ${SITE.name} alcanzan hasta 44°C. Contamos con 8 piscinas a distintas temperaturas para que elijas la que más te convenga.`,
   },
   {
     question: '¿Cuáles son los horarios de atención?',
@@ -20,7 +21,7 @@ const faqs = [
   },
   {
     question: '¿Puedo traer niños?',
-    answer: 'Por supuesto. Somos un lugar familiar con tarifas especiales para menores de 12 años y áreas seguras diseñadas para los más pequeños.',
+    answer: `Por supuesto. ${SITE.name} es un lugar familiar con tarifas especiales para menores de 12 años y áreas seguras diseñadas para los más pequeños.`,
   },
   {
     question: '¿Es necesario reservar con anticipación?',
@@ -32,7 +33,7 @@ const faqs = [
   },
   {
     question: '¿Ofrecen alojamiento?',
-    answer: 'En nuestro complejo nos especializamos en servicios de spa. En la zona hay hoteles y posadas a pocos metros para complementar tu estadía.',
+    answer: `En ${SITE.name} nos especializamos en servicios de spa. En la zona hay hoteles y posadas a pocos metros para complementar tu estadía.`,
   },
 ]
 
@@ -88,7 +89,7 @@ export default function FAQ() {
               Nuestro equipo está disponible para ayudarte
             </p>
             <a
-              href="https://wa.me/5984736980"
+              href={`https://wa.me/${SITE.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-flex"

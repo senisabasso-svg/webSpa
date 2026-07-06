@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-scroll'
 import { ChevronDown, Star, Droplets } from 'lucide-react'
+import { SITE } from '../data/site'
+import { spaImages } from '../data/images'
 
 export default function Hero() {
   return (
@@ -8,9 +10,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <div
           className="absolute inset-0 bg-cover bg-center animate-ken-burns scale-110"
-          style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1540555700474-954638992c09?w=1920&h=1080&fit=crop&q=80)',
-          }}
+          style={{ backgroundImage: `url(${spaImages.hero})` }}
         />
         <div className="absolute inset-0 bg-hero-overlay" />
         <div className="absolute inset-0 bg-gradient-to-r from-spa-dark/60 via-transparent to-spa-dark/40" />
@@ -20,7 +20,7 @@ export default function Hero() {
         <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
           <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm font-medium tracking-wide mb-8">
             <Droplets size={16} className="text-spa-gold-light" />
-            Spa Médico · Daymán, Salto
+            {SITE.name} · {SITE.location}
           </span>
         </div>
 
@@ -37,7 +37,7 @@ export default function Hero() {
           className="text-lg md:text-xl mb-10 text-white/85 font-light max-w-2xl mx-auto leading-relaxed animate-fade-in-up"
           style={{ animationDelay: '0.35s' }}
         >
-          8 piscinas termales, medicina hiperbárica, sauna, vapor y masajes profesionales.
+          En {SITE.name} disfrutá 8 piscinas termales, medicina hiperbárica, sauna, vapor y masajes profesionales.
           Tu oasis de bienestar a solo 10 km de Salto.
         </p>
 
@@ -49,7 +49,7 @@ export default function Hero() {
             Explorar Servicios
           </Link>
           <a
-            href="https://wa.me/5984736980"
+            href={`https://wa.me/${SITE.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-white cursor-pointer"

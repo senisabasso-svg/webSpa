@@ -1,5 +1,7 @@
 import React from 'react'
 import { MapPin, Clock, Waves, DollarSign } from 'lucide-react'
+import { SITE } from '../data/site'
+import { spaImages } from '../data/images'
 
 const stats = [
   { icon: Waves, value: '8', label: 'Piscinas termales' },
@@ -19,8 +21,8 @@ export default function About() {
           <div className="image-frame order-2 md:order-1">
             <div className="rounded-3xl overflow-hidden shadow-spa-lg aspect-[4/5]">
               <img
-                src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=700&h=900&fit=crop&q=80"
-                alt="Instalaciones de SPA Thermal Daymán"
+                src={spaImages.about}
+                alt={`Piscinas termales de ${SITE.name}`}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
@@ -29,13 +31,13 @@ export default function About() {
           <div className="order-1 md:order-2">
             <span className="section-label">Nuestra Historia</span>
             <h2 className="section-title mb-6">
-              Un refugio de <span className="text-gradient-gold italic">bienestar</span> en Daymán
+              Bienestar integral en <span className="text-gradient-gold italic">{SITE.name}</span>
             </h2>
             <div className="divider-ornament">
               <span className="text-spa-gold text-lg">✦</span>
             </div>
             <p className="text-gray-700 mb-5 leading-relaxed text-lg">
-              SPA Thermal Daymán es el spa médico más completo de Salto. Combinamos las propiedades terapéuticas de las aguas termales naturales con tecnología médica de vanguardia y servicios de bienestar integral.
+              {SITE.name} es el spa médico más completo de Salto. Combinamos las propiedades terapéuticas de las aguas termales naturales con tecnología médica de vanguardia y servicios de bienestar integral.
             </p>
             <p className="text-gray-600 mb-10 leading-relaxed">
               Nuestro equipo de profesionales certificados crea experiencias personalizadas: 8 piscinas a distintas temperaturas, sauna, vapor, medicina hiperbárica, masajes terapéuticos y tratamientos faciales de lujo.
@@ -57,7 +59,7 @@ export default function About() {
             <div className="flex items-start gap-3 text-gray-600">
               <MapPin size={20} className="text-spa-gold mt-0.5 flex-shrink-0" />
               <p className="text-sm">
-                <strong className="text-spa-dark">Ubicación:</strong> Km 478 Ruta 3, Costa del Río Daymán, Salto, Uruguay
+                <strong className="text-spa-dark">Ubicación:</strong> {SITE.address}, {SITE.city}
               </p>
             </div>
           </div>

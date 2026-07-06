@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from 'lucide-react'
+import { SITE } from '../data/site'
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' })
@@ -25,10 +26,10 @@ export default function Contact() {
       title: 'Ubicación',
       content: (
         <>
-          <p className="text-gray-700">Km 478 Ruta 3, Costa del Río Daymán</p>
-          <p className="text-gray-500 text-sm">Salto, Uruguay</p>
+          <p className="text-gray-700">{SITE.address}</p>
+          <p className="text-gray-500 text-sm">{SITE.city}</p>
           <a
-            href="https://maps.google.com/maps?q=Termas+del+Dayman+Salto+Uruguay"
+            href={`https://maps.google.com/maps?q=${SITE.mapsQuery}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-spa-gold hover:text-spa-gold-dark font-medium text-sm mt-2 inline-block"
@@ -42,8 +43,8 @@ export default function Contact() {
       icon: Phone,
       title: 'Teléfono',
       content: (
-        <a href="tel:+5984736980" className="text-gray-700 hover:text-spa-gold transition-colors">
-          (+598) 4736 9280
+        <a href={`tel:${SITE.phone}`} className="text-gray-700 hover:text-spa-gold transition-colors">
+          {SITE.phoneDisplay}
         </a>
       ),
     },
@@ -51,8 +52,8 @@ export default function Contact() {
       icon: Mail,
       title: 'Email',
       content: (
-        <a href="mailto:contacto@spathermaldayman.com.uy" className="text-gray-700 hover:text-spa-gold transition-colors">
-          contacto@spathermaldayman.com.uy
+        <a href={`mailto:${SITE.email}`} className="text-gray-700 hover:text-spa-gold transition-colors">
+          {SITE.email}
         </a>
       ),
     },
@@ -61,7 +62,7 @@ export default function Contact() {
       title: 'Horarios',
       content: (
         <>
-          <p className="text-gray-700">Lunes a Domingo: 9:00 – 21:00</p>
+          <p className="text-gray-700">Lunes a Domingo: {SITE.hours}</p>
           <p className="text-gray-500 text-sm">Abierto todos los feriados</p>
         </>
       ),
@@ -76,7 +77,7 @@ export default function Contact() {
         <div className="text-center mb-16">
           <span className="section-label">Reservas</span>
           <h2 className="section-title mb-5">
-            Reserva tu <span className="text-gradient-gold italic">experiencia</span>
+            Reserva en <span className="text-gradient-gold italic">{SITE.name}</span>
           </h2>
           <p className="section-subtitle mx-auto">
             Estamos listos para recibirte. Escribinos y te ayudamos a planificar tu visita ideal
@@ -103,7 +104,7 @@ export default function Contact() {
             </div>
 
             <a
-              href="https://wa.me/5984736980"
+              href={`https://wa.me/${SITE.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-4 px-6 rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
@@ -149,7 +150,7 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  placeholder="Cuéntanos qué experiencia buscás..."
+                  placeholder={`Cuéntanos qué experiencia buscás en ${SITE.name}...`}
                   rows="5"
                   className="w-full px-4 py-3.5 bg-spa-light border border-spa-sand rounded-xl focus:border-spa-gold transition-colors resize-none"
                 />
@@ -174,18 +175,20 @@ export default function Contact() {
         </div>
 
         <div className="mt-16">
-          <h3 className="text-2xl font-serif font-semibold text-spa-dark mb-6 text-center">Cómo llegar</h3>
+          <h3 className="text-2xl font-serif font-semibold text-spa-dark mb-6 text-center">
+            Cómo llegar a {SITE.name}
+          </h3>
           <div className="rounded-3xl overflow-hidden shadow-spa-lg h-80 md:h-96 ring-1 ring-spa-sand">
             <iframe
               width="100%"
               height="100%"
               frameBorder="0"
               style={{ border: 0 }}
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3344.8269999999998!2d-57.024!3d-31.432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95e2b2b2b2b2b2b3%3A0x1a1a1a1a1a1a1a1a!2sTermas%20del%20Dayma%CC%81n!5e0!3m2!1ses!2suy!4v"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3344.5!2d-57.9086561!3d-31.4574236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95acb8c8c8c8c8c9%3A0x0!2sSPA%20Thermal%20Daym%C3%A1n!5e0!3m2!1ses!2suy!4v1700000000000"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Ubicación SPA Thermal Daymán"
+              title={`Ubicación ${SITE.name}`}
             />
           </div>
         </div>

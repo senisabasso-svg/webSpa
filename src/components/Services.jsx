@@ -1,5 +1,7 @@
 import React from 'react'
 import { Droplets, Wind, Flame, Smile, Heart, Users, ArrowRight } from 'lucide-react'
+import { SITE } from '../data/site'
+import { spaImages } from '../data/images'
 
 const services = [
   {
@@ -72,7 +74,7 @@ export default function Services() {
             Servicios de <span className="text-gradient-gold italic">bienestar</span>
           </h2>
           <p className="section-subtitle mx-auto">
-            Tratamientos diseñados para nutrir cuerpo, mente y espíritu en un entorno de lujo natural
+            Tratamientos en {SITE.name} para nutrir cuerpo, mente y espíritu
           </p>
         </div>
 
@@ -86,7 +88,7 @@ export default function Services() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: 'url(https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1200&h=400&fit=crop&q=80)',
+              backgroundImage: `url(${spaImages.cta})`,
             }}
           />
           <div className="absolute inset-0 bg-spa-dark/80" />
@@ -98,7 +100,7 @@ export default function Services() {
               Nuestro equipo profesional crea programas personalizados según tus necesidades y objetivos de bienestar.
             </p>
             <a
-              href="https://wa.me/5984736980"
+              href={`https://wa.me/${SITE.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-flex"

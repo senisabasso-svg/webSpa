@@ -1,6 +1,7 @@
 import React from 'react'
 import { Facebook, Instagram, MapPin, Phone, Mail } from 'lucide-react'
 import { Link } from 'react-scroll'
+import { SITE } from '../data/site'
 
 const quickLinks = [
   { label: 'Inicio', to: 'hero' },
@@ -24,12 +25,12 @@ export default function Footer() {
                   <span className="text-spa-dark font-serif font-bold text-lg">ST</span>
                 </div>
                 <div>
-                  <span className="font-serif font-semibold text-lg block">SPA Thermal Daymán</span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-spa-gold/70">Salto · Uruguay</span>
+                  <span className="font-serif font-semibold text-lg block">{SITE.name}</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-spa-gold/70">{SITE.tagline}</span>
                 </div>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Tu spa médico integral en Daymán. Bienestar, relax y salud en un mismo lugar, rodeado de naturaleza.
+                Tu spa médico integral en Salto. Bienestar, relax y salud en {SITE.name}, rodeado de naturaleza.
               </p>
             </div>
 
@@ -55,24 +56,24 @@ export default function Footer() {
             <div>
               <h4 className="font-serif font-semibold text-lg mb-5 text-spa-gold-light">Horarios</h4>
               <p className="text-gray-400 text-sm mb-2">Abierto todos los días</p>
-              <p className="text-spa-gold font-serif text-2xl font-semibold">9:00 – 21:00</p>
+              <p className="text-spa-gold font-serif text-2xl font-semibold">{SITE.hours}</p>
               <p className="text-gray-500 text-sm mt-3">Incluyendo feriados</p>
             </div>
 
             <div>
               <h4 className="font-serif font-semibold text-lg mb-5 text-spa-gold-light">Contacto</h4>
               <div className="space-y-3">
-                <a href="tel:+5984736980" className="flex items-center gap-3 text-gray-400 hover:text-spa-gold transition-colors text-sm">
+                <a href={`tel:${SITE.phone}`} className="flex items-center gap-3 text-gray-400 hover:text-spa-gold transition-colors text-sm">
                   <Phone size={16} className="text-spa-gold/60" />
-                  (+598) 4736 9280
+                  {SITE.phoneDisplay}
                 </a>
-                <a href="mailto:contacto@spathermaldayman.com.uy" className="flex items-center gap-3 text-gray-400 hover:text-spa-gold transition-colors text-sm">
+                <a href={`mailto:${SITE.email}`} className="flex items-center gap-3 text-gray-400 hover:text-spa-gold transition-colors text-sm">
                   <Mail size={16} className="text-spa-gold/60" />
-                  contacto@spathermaldayman.com.uy
+                  {SITE.email}
                 </a>
                 <div className="flex items-start gap-3 text-gray-400 text-sm">
                   <MapPin size={16} className="text-spa-gold/60 mt-0.5 flex-shrink-0" />
-                  Km 478 Ruta 3, Salto
+                  {SITE.address}, Salto
                 </div>
               </div>
             </div>
@@ -80,7 +81,7 @@ export default function Footer() {
 
           <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="text-gray-500 text-sm text-center md:text-left">
-              <p>&copy; 2026 SPA Thermal Daymán. Todos los derechos reservados.</p>
+              <p>&copy; 2026 {SITE.name}. Todos los derechos reservados.</p>
               <p className="mt-1">
                 Diseño web por{' '}
                 <a href="https://febros.dev" className="text-spa-gold/80 hover:text-spa-gold transition-colors">
@@ -91,15 +92,15 @@ export default function Footer() {
 
             <div className="flex gap-3">
               {[
-                { href: 'https://facebook.com/spathermaldayman', icon: Facebook, label: 'Facebook' },
-                { href: 'https://instagram.com/spathermaldayman', icon: Instagram, label: 'Instagram' },
+                { href: SITE.facebook, icon: Facebook, label: 'Facebook' },
+                { href: SITE.instagram, icon: Instagram, label: 'Instagram' },
               ].map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.label}
+                  aria-label={`${SITE.name} en ${social.label}`}
                   className="w-10 h-10 rounded-full border border-white/10 hover:border-spa-gold hover:bg-spa-gold/10 flex items-center justify-center text-gray-400 hover:text-spa-gold transition-all duration-300"
                 >
                   <social.icon size={18} />

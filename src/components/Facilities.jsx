@@ -1,55 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Thermometer, Sparkles, Leaf, Accessibility } from 'lucide-react'
-
-const facilities = [
-  {
-    image: 'https://images.unsplash.com/photo-1540555700474-954638992c09?w=1200&h=700&fit=crop&q=80',
-    title: 'Piscinas Termales',
-    description: 'Ocho piscinas con agua natural a distintas temperaturas',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1200&h=700&fit=crop&q=80',
-    title: 'Sauna y Vapor',
-    description: 'Sauna finlandés y cabina de vapor para desintoxicación profunda',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1200&h=700&fit=crop&q=80',
-    title: 'Área de Masajes',
-    description: 'Salas privadas con ambiente sereno para tratamientos exclusivos',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=700&fit=crop&q=80',
-    title: 'Zona de Relajación',
-    description: 'Espacios diseñados para meditación y descanso profundo',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1505228395891-9a51e7e86e81?w=1200&h=700&fit=crop&q=80',
-    title: 'Entorno Natural',
-    description: 'Rodeado de vegetación nativa y aire puro del río Daymán',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1597836212624-27a9be7d0d18?w=1200&h=700&fit=crop&q=80',
-    title: 'Vista al Río Daymán',
-    description: 'Paisajes únicos que elevan cada momento de tu visita',
-  },
-]
+import { SITE } from '../data/site'
+import { spaImages } from '../data/images'
 
 const features = [
-  { icon: Thermometer, title: 'Aguas Termales', desc: 'Propiedades minerales naturales' },
-  { icon: Sparkles, title: 'Masajes Profesionales', desc: 'Terapeutas certificados' },
-  { icon: Leaf, title: 'Entorno Natural', desc: 'Naturaleza y tranquilidad' },
+  { icon: Thermometer, title: 'Piscinas Termales', desc: '8 piscinas con agua mineral natural' },
+  { icon: Sparkles, title: 'Masajes Profesionales', desc: 'Terapeutas certificados en el SPA' },
+  { icon: Leaf, title: 'Entorno Natural', desc: 'Parque y naturaleza en el complejo' },
   { icon: Accessibility, title: 'Accesibilidad', desc: 'Instalaciones inclusivas' },
 ]
 
 export default function Facilities() {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const facilities = spaImages.facilities
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % facilities.length)
     }, 6000)
     return () => clearInterval(timer)
-  }, [])
+  }, [facilities.length])
 
   const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % facilities.length)
   const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + facilities.length) % facilities.length)
@@ -60,10 +30,10 @@ export default function Facilities() {
         <div className="text-center mb-16">
           <span className="section-label">El Lugar</span>
           <h2 className="section-title mb-5">
-            Instalaciones de <span className="text-gradient-gold italic">clase mundial</span>
+            Instalaciones de <span className="text-gradient-gold italic">{SITE.name}</span>
           </h2>
           <p className="section-subtitle mx-auto">
-            Espacios pensados para que cada visita sea una experiencia memorable
+            Piscinas termales, sauna, vapor y espacios de relax en nuestro complejo spa
           </p>
         </div>
 
@@ -74,7 +44,7 @@ export default function Facilities() {
                 key={idx}
                 className={`absolute inset-0 transition-opacity duration-700 ${idx === currentIndex ? 'opacity-100' : 'opacity-0'}`}
               >
-                <img src={facility.image} alt={facility.title} className="w-full h-full object-cover" />
+                <img src={facility.image} alt={`${facility.title} - ${SITE.name}`} className="w-full h-full object-cover" />
               </div>
             ))}
             <div className="absolute inset-0 bg-gradient-to-t from-spa-dark/80 via-spa-dark/20 to-transparent" />

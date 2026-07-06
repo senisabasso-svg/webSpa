@@ -1,19 +1,20 @@
 import React from 'react'
 import { Star, Quote } from 'lucide-react'
+import { SITE } from '../data/site'
 
 const testimonials = [
   {
     name: 'María González',
     location: 'Salto, Uruguay',
     rating: 5,
-    text: 'Un lugar increíble para desconectar. Las piscinas termales son espectaculares y el personal muy atento. Volvemos cada mes con la familia.',
+    text: 'Un lugar increíble para desconectar. Las piscinas termales de SPA Thermal Daymán son espectaculares y el personal muy atento. Volvemos cada mes con la familia.',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&q=80',
   },
   {
     name: 'Carlos Mendez',
     location: 'Montevideo, Uruguay',
     rating: 5,
-    text: 'El masaje terapéutico fue lo mejor que me hice en años. Las instalaciones son impecables y el ambiente transmite paz desde que llegás.',
+    text: 'El masaje terapéutico en SPA Thermal Daymán fue lo mejor que me hice en años. Las instalaciones son impecables y el ambiente transmite paz desde que llegás.',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80',
   },
   {
@@ -62,7 +63,7 @@ export default function Testimonials() {
             Lo que dicen nuestros <span className="text-gradient-gold italic">visitantes</span>
           </h2>
           <p className="section-subtitle mx-auto">
-            Experiencias reales de quienes encontraron su oasis de bienestar con nosotros
+            Experiencias reales de quienes visitaron {SITE.name}
           </p>
         </div>
 

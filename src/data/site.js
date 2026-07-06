@@ -1,0 +1,17 @@
+export const SITE = {
+  name: 'SPA Thermal Daymán',
+  shortName: 'SPA Thermal',
+  tagline: 'SPA Médico en Salto, Uruguay',
+  location: 'Daymán, Salto, Uruguay',
+  domain: 'https://spathermaldayman.com.uy',
+  email: 'contacto@spathermaldayman.com.uy',
+  phone: '+5984736980',
+  phoneDisplay: '(+598) 4736 9280',
+  whatsapp: '5984736980',
+  address: 'Km 478 Ruta 3, Costa del Río Daymán',
+  city: 'Salto, Uruguay',
+  hours: '9:00 – 21:00',
+  facebook: 'https://facebook.com/spathermaldayman',
+  instagram: 'https://instagram.com/spathermaldayman',
+  mapsQuery: 'SPA+Thermal+Dayman+Salto+Uruguay',
+}

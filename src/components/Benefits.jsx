@@ -1,5 +1,6 @@
 import React from 'react'
 import { Zap, Brain, Heart, Leaf, Users, Sparkles } from 'lucide-react'
+import { SITE } from '../data/site'
 
 const benefits = [
   {
@@ -44,7 +45,7 @@ export default function Benefits() {
             Beneficios del <span className="text-gradient-gold italic">agua termal</span>
           </h2>
           <p className="section-subtitle mx-auto">
-            Propiedades terapéuticas comprobadas que transforman tu salud física y mental
+            Propiedades terapéuticas del agua termal en {SITE.name}
           </p>
         </div>
 
@@ -74,7 +75,7 @@ export default function Benefits() {
                 Respaldado por la ciencia
               </h3>
               <p className="text-white/70 mb-6 leading-relaxed">
-                Las aguas termales de Daymán contienen minerales esenciales con propiedades terapéuticas reconocidas:
+                Las aguas termales de {SITE.name} contienen minerales esenciales con propiedades terapéuticas reconocidas:
               </p>
               <ul className="space-y-3">
                 {[

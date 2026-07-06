@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { ArrowUp } from 'lucide-react'
+import { SITE } from './data/site'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -13,7 +14,7 @@ import Footer from './components/Footer'
 
 export default function App() {
   useEffect(() => {
-    document.title = 'SPA Thermal Daymán - SPA Médico en Salto, Uruguay'
+    document.title = `${SITE.name} - ${SITE.tagline}`
     window.scrollTo(0, 0)
   }, [])
 
